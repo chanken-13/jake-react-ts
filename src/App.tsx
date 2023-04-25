@@ -45,32 +45,32 @@
 
 //#region 6章 再レンダリング(TypeScript化)
 
-// import { useState, memo, useCallback } from "react";
-// import { Child1 } from "./components/6_re-rendering/Child1";
-// import { Child4 } from "./components/6_re-rendering/Child4";
+import { useState, memo, useCallback } from "react";
+import { Child1 } from "./components/6_re-rendering/Child1";
+import { Child4 } from "./components/6_re-rendering/Child4";
 
-// export const App = memo((): JSX.Element => {
-//   console.log("App レンダリング ");
+export const App = memo((): JSX.Element => {
+  console.log("App レンダリング ");
 
-//   const [num, setNum] = useState<number>(0);
+  const [num, setNum] = useState<number>(0);
 
-//   const onClickButton = (): void => {
-//     setNum(num + 1);
-//   };
+  const onClickButton = (): void => {
+    setNum(num + 1);
+  };
 
-//   const onClickReset = useCallback((): void => {
-//     setNum(0);
-//   }, []);
+  const onClickReset = useCallback((): void => {
+    setNum(0);
+  }, []);
 
-//   return (
-//     <>
-//       <button onClick={onClickButton}>ボタン</button>
-//       <p>{num}</p>
-//       <Child1 onClickReset={onClickReset} />
-//       <Child4 />
-//     </>
-//   );
-// });
+  return (
+    <>
+      <button onClick={onClickButton}>ボタン</button>
+      <p>{num}</p>
+      <Child1 onClickReset={onClickReset} />
+      <Child4 />
+    </>
+  );
+});
 
 //#endregion
 
@@ -150,29 +150,29 @@
 
 //#region 9章 カスタムフック(TypeScript化)
 
-import { useFetchUsers } from "./hooks/useFetchUsers";
+// import { useFetchUsers } from "./hooks/useFetchUsers";
 
-export const App = (): JSX.Element => {
-  // カスタムフックの使用
-  // 関数を実行し返却値を分割代入で受け取る
-  const { userList, isLoading, isError, onClickFetchUser } = useFetchUsers();
+// export const App = (): JSX.Element => {
+//   // カスタムフックの使用
+//   // 関数を実行し返却値を分割代入で受け取る
+//   const { userList, isLoading, isError, onClickFetchUser } = useFetchUsers();
 
-  return (
-    <div>
-      <button onClick={onClickFetchUser}>ユーザー取得</button>
-      {/* エラーの場合はエラーメッセージを表示 */}
-      {isError && <p style={{ color: "red" }}>エラーが発生しました</p>}
-      {/* ローディング中は表示を切り替える */}{" "}
-      {isLoading ? (
-        <p>データ取得中です</p>
-      ) : (
-        userList.map((user) => (
-          <p key={user.id}>{`${user.id}:${user.name} (${user.age} 歳) ${user.street}`}</p>
-        ))
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <button onClick={onClickFetchUser}>ユーザー取得</button>
+//       {/* エラーの場合はエラーメッセージを表示 */}
+//       {isError && <p style={{ color: "red" }}>エラーが発生しました</p>}
+//       {/* ローディング中は表示を切り替える */}{" "}
+//       {isLoading ? (
+//         <p>データ取得中です</p>
+//       ) : (
+//         userList.map((user) => (
+//           <p key={user.id}>{`${user.id}:${user.name} (${user.age} 歳) ${user.street}`}</p>
+//         ))
+//       )}
+//     </div>
+//   );
+// };
 
 //#endregion
 
